@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="{% static 'users/login.css' %}">
+</head>
+<body>
+    
+        <section class="container">
+            <div class="login-container">
+                <div class="circle circle-one"></div>
+                <div class="form-container">
+                    {% comment %} <img src="https://raw.githubusercontent.com/hicodersofficial/glassmorphism-login-form/master/assets/illustration.png" alt="illustration" class="illustration" /> {% endcomment %}
+                    <h1 class="opacity">LOGIN</h1>
+
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p style="color: red;">{{ message }}</p>
+                        {% endfor %}
+                    {% endif %}
+
+                    <form action="" method="post">
+                        {%csrf_token %}
+                        {{ logform }}
+                        <button class="opacity">LOGIN</button>
+                    </form>
+
+                    <div class="register-forget opacity">
+                        <a href="{% url 'userSignup' %}"> SIGNUP </a>
+                        <!-- <a href="">FORGOT PASSWORD</a> -->
+                    </div>
+                </div>
+                <div class="circle circle-two"></div>
+            </div>
+            <div class="theme-btn-container"></div>
+        </section>
+
+        <script src="{% static 'users/login.js' %}"></script>
+</body>
+</html>

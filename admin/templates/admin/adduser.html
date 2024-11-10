@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add User</title>
+    <link rel="stylesheet" href="{% static 'admin/adduser.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Add New User</h1>
+
+        
+
+        <!-- Back Button -->
+        <a href="{% url 'adminHome' %}" class="back-btn">← Back</a>
+        
+        <form method="POST" action="" class="add-user-form">
+            {% csrf_token %}
+
+            <!-- Username Field and Error -->
+            <div class="form-group">
+                <label for="username">Username</label>
+                {{ form.username }}
+                {% if form.username.errors %}
+                    <div class="error">{{ form.username.errors.0 }}</div>
+                {% endif %}
+            </div>
+
+            <!-- Email Field -->
+            <div class="form-group">
+                <label for="email">Email</label>
+                {{ form.email }}
+            </div>
+
+            <!-- Password Field -->
+            <div class="form-group">
+                <label for="password">Password</label>
+                {{ form.password }}
+            </div>
+
+            <!-- Confirm Password Field and Error -->
+            <div class="form-group">
+                <label for="confirm_password">Confirm Password</label>
+                {{ form.confirm_password }}
+                {% if form.non_field_errors %}
+                    <div class="error">{{ form.non_field_errors.0 }}</div>
+                {% endif %}
+            </div>
+
+            <button type="submit" class="add-btn">Add User</button>
+        </form>
+    </div>
+</body>
+</html>

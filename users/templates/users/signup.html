@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <link rel="stylesheet" href="{% static 'users/signup.css' %}">
+</head>
+<body>
+
+    <div class="container">
+        <form action="#" class="form", method="post">
+
+            {% if messages %}
+            {% for message in messages %}
+               <p style="color: red; text-align: center; ">{{ message }}</p>
+            {% endfor %}
+            {% endif %}
+         {% csrf_token %}
+           <h2 class="title">Register</h2>
+           <p class="title-message">Signup now and get full access to our app.</p>
+
+           <!-- Username Field -->
+           <label>
+              {{ forms.username }}
+           </label>
+           
+           <!-- Email Field -->
+           <label>
+              {{ forms.email }}
+           </label>
+
+           <!-- Password Field -->
+           <label>
+              {{ forms.password }}
+           </label>
+
+           <!-- Confirm Password Field -->
+           <label>
+              {{ forms.confirm_password }}
+           </label>
+
+           <!-- Submit Button -->
+           <button class="submit">Submit</button>
+
+           <!-- Sign-in Link -->
+           <p class="sign-in">Already have an account?
+             <a href="{% url 'userLogin' %}" style="color: #43c7e8">Signin</a>
+           </p>
+        </form>
+     </div>
+
+</body>
+</html>

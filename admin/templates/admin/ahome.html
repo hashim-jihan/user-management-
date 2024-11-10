@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Home</title>
+    <link rel="stylesheet" href="{% static 'admin/ahome.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-brand">Admin Dashboard</div>
+        <ul class="nav-links">
+            <li><a href="{% url 'adminHome' %}">HOME</a></li>
+            <li><a href="{% url 'usersList' %}">USERS</a></li>
+            <li><a href="{% url 'addUser' %}">ADD USER</a></li>
+            <li><a href="{% url 'adminLogout' %}" class="logout">LOGOUT</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Welcome {{ user.username |title }}</h1>
+        <p>Use the navigation bar to manage users and access other admin functionalities.</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update User</title>
+    <link rel="stylesheet" href="{% static 'admin/userupdate.css' %}">
+</head>
+<body>
+
+    <div class="container">
+        <!-- Back Button -->
+        <a href="{% url 'usersList' %}" class="back-btn">← Back</a>
+        
+        <h1>Update Profile</h1>
+
+        <form method="POST" action="" class="update-form">
+            {% csrf_token %}1
+
+            <div class="form-group">
+                {{ form.username }}
+                <label for="username">Username</label>
+                {% if form.username.errors %}
+                    <p style="color: red;"><b>{{ form.username.errors.0 }}</b></p>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form.email }}
+                <label for="email">Email</label>
+            </div>
+
+            <button type="submit" class="submit-btn">Save Changes</button>
+        </form>
+    </div>
+
+</body>
+</html>
